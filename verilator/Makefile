@@ -3,6 +3,8 @@ docker_image_name = verilator
 
 verilator_version = 3.904
 
+default: build
+
 build:
 	docker build -f $(dockerfile) -t $(docker_image_name) .
 
