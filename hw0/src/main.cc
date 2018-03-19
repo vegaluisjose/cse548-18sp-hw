@@ -1,13 +1,12 @@
 #include <iostream>
 using namespace std;
 
-#include "Vadder.h"
 #include "verilated.h"
 
 int main(int argc, char **argv, char **env) {
     
     Verilated::commandArgs(argc, argv);
-    Vadder* top = new Vadder;
+    VNAME *top = new VNAME;
     
     while (!Verilated::gotFinish()) {
       if (top->clock)
