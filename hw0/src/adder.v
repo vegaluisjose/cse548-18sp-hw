@@ -11,17 +11,11 @@ module adder
     br <= b;
   end
 
-  logic [31:0] z;
-
-  always_comb begin
-    z = ar + br;
-  end
-
   // pipeline stage 1
   logic [31:0] yr;
   always_ff @(posedge clk)
-    yr <= z;
+    yr <= ar + br;
 
-  assign y = z;
+  assign y = yr;
 
 endmodule
