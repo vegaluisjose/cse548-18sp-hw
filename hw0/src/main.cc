@@ -1,6 +1,4 @@
 #include <stdint.h>
-#include <iostream>
-#include <iomanip>
 #include "verilated.h"
 
 using namespace std;
@@ -20,10 +18,8 @@ int main(int argc, char **argv, char **env) {
       b += 2;
 
       if (top->clk) {
+        printf("cycle:%08lld, a:%08d b:%08d y:%08d\n", cycles, top->a, top->b, top->y);
         cycles++;
-        cout << "a:" << top->a;
-        cout << " b:" << top->b;
-        cout << " y:" << top->y << endl;
       }
 
       top->a = a;
