@@ -1,5 +1,5 @@
 dockerfile = $(abspath .)/Dockerfile
-docker_image_name = verilator
+docker_image_name = cse548
 
 verilator_version = 3.904
 

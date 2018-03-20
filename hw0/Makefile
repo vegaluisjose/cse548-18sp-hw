@@ -7,7 +7,7 @@ verilator_bin = $(verilator_ins)/bin/verilator
 
 hw_dir = $(abspath .)
 docker_hw_dir = /home/hw0
-docker_image_name = verilator
+docker_image_name = cse548
 docker_cmd = docker run -v $(hw_dir):$(docker_hw_dir) -it $(docker_image_name)
 
 src_dir = $(docker_hw_dir)/src
