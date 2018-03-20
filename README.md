@@ -15,4 +15,4 @@
 
 4. Test if you can run container in interactive mode
     * Run `make -C setup run`
-    * Run `exit`
+    * Run (in the cointainer) `exit`
