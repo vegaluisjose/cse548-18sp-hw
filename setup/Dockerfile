@@ -1,12 +1,14 @@
 FROM ubuntu:16.04
 
-RUN \
-  apt-get update && \
-  apt-get -y upgrade && \
-  apt-get install -y build-essential && \
-  apt-get install -y software-properties-common && \
-  apt-get install -y tmux curl git man unzip vim wget && \
-  apt-get install -y flex bison
+RUN apt-get update
+RUN apt-get -y upgrade
+RUN apt-get install -y build-essential
+RUN apt-get install -y software-properties-common
+RUN apt-get install -y tmux curl git man unzip vim wget
+RUN apt-get install -y flex bison autoconf automake autotools-dev
+RUN apt-get install -y curl libmpc-dev libmpfr-dev libgmp-dev gawk
+RUN apt-get install -y build-essential bison flex texinfo gperf
+RUN apt-get install -y libtool patchutils bc zlib1g-dev
 
 ENV HOME /home
 WORKDIR /home
@@ -28,15 +30,50 @@ RUN cd ${verilator_dir} && ./configure --prefix=${verilator_ins}
 RUN make -C ${verilator_dir} verilator_bin
 RUN make -C ${verilator_dir} installbin installdata
 
+# ariane source
+ENV ariane_ver 5f194d9c9558a1fed8dc55fff43358c750a1489a
+ENV ariane_dir ${HOME}/ariane
+RUN git clone https://github.com/pulp-platform/ariane.git ${ariane_dir}
+RUN git -C ${ariane_dir} checkout ${ariane_ver} -b cse548
+RUN git -C ${ariane_dir} submodule update --init --recursive
+
 # ariane riscv-fesvr
+ENV fesvr_ver caffc16f703de16866f5d49daaaf3f474900b9a7
 ENV fesvr_dir ${HOME}/riscv-fesvr
-ENV fesvr_ins ${HOME}/riscv-fesvr/install
-ENV fesvr_bld ${HOME}/riscv-fesvr/build
+ENV fesvr_ins ${fesvr_dir}/install
+ENV fesvr_bld ${fesvr_dir}/build
+ENV LD_LIBRARY_PATH ${fesvr_ins}/lib
 RUN git clone https://github.com/pulp-platform/riscv-fesvr.git ${fesvr_dir}
-RUN git -C ${fesvr_dir} checkout caffc16f703de16866f5d49daaaf3f474900b9a7 -b cse548
+RUN git -C ${fesvr_dir} checkout ${fesvr_ver} -b cse548
 RUN mkdir -p ${fesvr_bld} ${fesvr_ins}
 RUN cd ${fesvr_bld} && ../configure --prefix=${fesvr_ins}
 RUN make -C ${fesvr_bld} install
+
+# riscv gnu toolchain
+ENV toolchain_ver b4dae89f85bf882852c6186b1284df11065bfcd9
+ENV toolchain_dir ${HOME}/riscv-gnu-toolchain
+ENV toolchain_bld ${toolchain_dir}/build
+ENV RISCV ${toolchain_dir}/install
+ENV PATH ${RISCV}/bin:${PATH}
+RUN git clone --depth=50 https://github.com/riscv/riscv-gnu-toolchain.git ${toolchain_dir}
+RUN git -C ${toolchain_dir} checkout ${toolchain_ver} -b cse548
+RUN git -C ${toolchain_dir} submodule update --init --recursive
+RUN mkdir -p ${toolchain_bld}
+RUN cd ${toolchain_bld} && ${toolchain_dir}/configure --prefix=${RISCV}
+RUN cd ${toolchain_bld} && make
+
+# riscv tests
+ENV rvtest_ver fc3d7e8196dfb567a9b6c34dd97c1b43260b4cd5
+ENV RISCV_TESTS ${HOME}/riscv-tests
+ENV rvtest_bld ${RISCV_TESTS}/build
+RUN git clone https://github.com/riscv/riscv-tests.git ${RISCV_TESTS}
+RUN git -C ${RISCV_TESTS} checkout ${rvtest_ver} -b cse548
+RUN git -C ${RISCV_TESTS} submodule update --init --recursive
+RUN cd ${RISCV_TESTS} && autoconf
+RUN mkdir -p ${rvtest_bld}
+RUN cd ${rvtest_bld} && ${RISCV_TESTS}/configure --prefix=${RISCV}/target
+RUN cd ${rvtest_bld} && make
+RUN cd ${rvtest_bld} && make install
 
 RUN cd ${HOME}
 
