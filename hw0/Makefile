@@ -16,30 +16,31 @@ src_files = \
 $(src_dir)/$(top_name).v \
 $(src_dir)/main.cc
 
-out_dir = $(docker_hw_dir)/out
-vcd_file = $(out_dir)/$(top_name).vcd
+out_dirname = out
+docker_out_dir = $(docker_hw_dir)/$(out_dirname)
+vcd_file = $(docker_out_dir)/$(top_name).vcd
 
 default: clean
 	$(docker_cmd) /usr/bin/make -C $(docker_hw_dir) $(sim_type)
 
-run: $(out_dir)/V$(top_name)
+run: $(docker_out_dir)/V$(top_name)
 	$<
 
-run_debug: $(out_dir)/V$(top_name)_debug
+run_debug: $(docker_out_dir)/V$(top_name)_debug
 	$<
 
-$(out_dir)/V$(top_name):
-	$(verilator_bin) --cc --exe -Mdir $(out_dir) $(src_files) \
+$(docker_out_dir)/V$(top_name):
+	$(verilator_bin) --cc --exe -Mdir $(docker_out_dir) $(src_files) \
 	-CFLAGS "-include V$(top_name).h -DVNAME=V$(top_name) -DTIMEOUT_CYCLES=$(timeout_cycles)" \
-	-o $(out_dir)/V$(top_name)
-	make -C $(out_dir) -f V$(top_name).mk
+	-o $(docker_out_dir)/V$(top_name)
+	make -C $(docker_out_dir) -f V$(top_name).mk
 
-$(out_dir)/V$(top_name)_debug:
-	$(verilator_bin) --trace --cc --exe -Mdir $(out_dir) $(src_files) \
+$(docker_out_dir)/V$(top_name)_debug:
+	$(verilator_bin) --trace --cc --exe -Mdir $(docker_out_dir) $(src_files) \
 	-CFLAGS "-include V$(top_name).h -DVNAME=V$(top_name) -DVM_TRACE" \
 	-CFLAGS "-DVCD_FILE=$(vcd_file) -DTIMEOUT_CYCLES=$(timeout_cycles)" \
-	-o $(out_dir)/V$(top_name)_debug
-	make -C $(out_dir) -f V$(top_name).mk
+	-o $(docker_out_dir)/V$(top_name)_debug
+	make -C $(docker_out_dir) -f V$(top_name).mk
 
 clean:
-	$(docker_cmd) /bin/rm -rf $(out_dir)
+	$(docker_cmd) /bin/rm -rf $(docker_out_dir)
