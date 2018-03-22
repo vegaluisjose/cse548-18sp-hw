@@ -1,9 +1,8 @@
 target ?= ariane
 
-# sim_opt, simulation options
+# simulation options
 # sim_opt = -p, show simulation
-# sim_opt = --vcd=<file>, store waveform
-sim_opt ?= "--vcd=test"
+# sim_opt = "--vcd=test", store waveform in test.vcd
 
 # verilator_ins env-variable is defined in Dockerfile
 verilator_bin = $(verilator_ins)/bin/verilator
@@ -76,7 +75,7 @@ $(ariane_dir):
 
 # riscv tests
 
-test = benchmarks/median.riscv
+test = benchmarks/vvadd.riscv
 
 rvtests: $(out_dir)/rvtests
 
