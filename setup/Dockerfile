@@ -30,13 +30,6 @@ RUN cd ${verilator_dir} && ./configure --prefix=${verilator_ins}
 RUN make -C ${verilator_dir} verilator_bin
 RUN make -C ${verilator_dir} installbin installdata
 
-# ariane source
-ENV ariane_ver 5f194d9c9558a1fed8dc55fff43358c750a1489a
-ENV ariane_dir ${HOME}/ariane
-RUN git clone https://github.com/pulp-platform/ariane.git ${ariane_dir}
-RUN git -C ${ariane_dir} checkout ${ariane_ver} -b cse548
-RUN git -C ${ariane_dir} submodule update --init --recursive
-
 # ariane riscv-fesvr
 ENV fesvr_ver caffc16f703de16866f5d49daaaf3f474900b9a7
 ENV fesvr_dir ${HOME}/riscv-fesvr
@@ -61,19 +54,6 @@ RUN git -C ${toolchain_dir} submodule update --init --recursive
 RUN mkdir -p ${toolchain_bld}
 RUN cd ${toolchain_bld} && ${toolchain_dir}/configure --prefix=${RISCV}
 RUN cd ${toolchain_bld} && make
-
-# riscv tests
-ENV rvtest_ver fc3d7e8196dfb567a9b6c34dd97c1b43260b4cd5
-ENV RISCV_TESTS ${HOME}/riscv-tests
-ENV rvtest_bld ${RISCV_TESTS}/build
-RUN git clone https://github.com/riscv/riscv-tests.git ${RISCV_TESTS}
-RUN git -C ${RISCV_TESTS} checkout ${rvtest_ver} -b cse548
-RUN git -C ${RISCV_TESTS} submodule update --init --recursive
-RUN cd ${RISCV_TESTS} && autoconf
-RUN mkdir -p ${rvtest_bld}
-RUN cd ${rvtest_bld} && ${RISCV_TESTS}/configure --prefix=${RISCV}/target
-RUN cd ${rvtest_bld} && make
-RUN cd ${rvtest_bld} && make install
 
 RUN cd ${HOME}
 
