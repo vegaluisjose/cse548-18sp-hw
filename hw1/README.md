@@ -6,7 +6,7 @@ Ariane is a 6-stage, single issue, in-order CPU which implements the 64-bit
 RISC-V instruction set. The goal of this step is to download the
 RTL-implementation and generate a binary for simulation.
 
-* Build `make target=ariane"
+* Build `make target=ariane`
 
 ## Building and running [riscv-tests](https://github.com/riscv/riscv-tests) for Ariane
 
