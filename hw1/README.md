@@ -32,7 +32,7 @@ RTL-implementation and generate a binary for simulation.
 | spmv          | PASS    |
 | vvadd         | PASS    |
 
-## Running hello-world in Ariane
+## Building and running a hello-world program in Ariane
     
-    * Build `make target=hello`
-    * Run `make target=run_hello`
+* Build `make target=hello`
+* Run `make target=run_hello`
