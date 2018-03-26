@@ -1,5 +1,9 @@
 # hw1
 
+## Setting up the environment
+
+If you have not setup the Docker image please read this [README](https://github.com/vegaluisjose/cse548-hw/blob/master/README.md)
+
 ## Setting up [Ariane](https://github.com/pulp-platform/ariane)
 
 Ariane is a 6-stage, single issue, in-order CPU which implements the 64-bit
@@ -32,7 +36,7 @@ RTL-implementation and generate a binary for simulation.
 | spmv          | PASS    |
 | vvadd         | PASS    |
 
-## Building and running a hello-world program in Ariane
+## Building and running a [hello-world](https://github.com/vegaluisjose/cse548-hw/blob/master/hw1/src/hello.c) program in Ariane
     
 * Build `make target=hello`
 * Run `make target=run_hello`
