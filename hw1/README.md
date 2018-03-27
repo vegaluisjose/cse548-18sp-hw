@@ -33,7 +33,7 @@ RTL-implementation and generate a binary for simulation.
 | towers        | PASS    |
 | qsort         | PASS    |
 | rsort         | PASS    |
-| spmv          | PASS    |
+| spmv          | FAIL    |
 | vvadd         | PASS    |
 
 ## Building and running a [hello-world](https://github.com/vegaluisjose/cse548-hw/blob/master/hw1/src/hello.c) program in Ariane
