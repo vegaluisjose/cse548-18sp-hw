@@ -1,4 +1,4 @@
-# hw0
+# hw0 - hello world SystemVerilog and simulation
 
 ## Setting up the environment
 
