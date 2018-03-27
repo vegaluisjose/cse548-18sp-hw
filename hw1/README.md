@@ -16,7 +16,7 @@ RTL-implementation and generate a binary for simulation.
 
 * Build riscv-tests by `make target=rvtests`
 * Run a test by `make target=run_test`
-    * Change a benchmark by changing the [test[(https://github.com/vegaluisjose/cse548-18sp-hw/blob/master/hw1/Makefile#L3) variable
+    * Change a benchmark by changing the [test](https://github.com/vegaluisjose/cse548-18sp-hw/blob/master/hw1/Makefile#L3) variable
 * Other compiled benchmark tests can be found in `ls ./out/rvtests/share/riscv-tests/benchmarks`
 * Other compiled isa tests can be found in `ls ./out/rvtests/share/riscv-tests/isa`
 
