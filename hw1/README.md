@@ -2,7 +2,7 @@
 
 ## Environment setup
 
-If you have not built the Docker image please read [this](https://github.com/vegaluisjose/cse548-hw/tree/master/setup)
+If you have not built the Docker image please read [this](https://github.com/vegaluisjose/cse548-18sp-hw/tree/master/setup)
 
 ## Setting up [Ariane](https://github.com/pulp-platform/ariane)
 
@@ -36,7 +36,7 @@ RTL-implementation and generate a binary for simulation.
 | spmv          | FAIL    |
 | vvadd         | PASS    |
 
-## Building and running a [hello-world](https://github.com/vegaluisjose/cse548-hw/blob/master/hw1/src/hello.c) program in Ariane
+## Building and running a [hello-world](https://github.com/vegaluisjose/cse548-18sp-hw/blob/master/hw1/src/hello.c) program in Ariane
     
 * Build `make target=hello`
 * Run `make target=run_hello`
