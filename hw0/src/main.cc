@@ -30,12 +30,12 @@ int main(int argc, char **argv, char **env) {
   tfp->open(STRINGIZE_VALUE_OF(VCD_FILE));
 #endif
 
-  top->clk = 0;
+  top->clk_i = 0;
 
   while (!Verilated::gotFinish() && cycles < TIMEOUT_CYCLES) {
 
-    top->a = a;
-    top->b = b;
+    top->a_i = a;
+    top->b_i = b;
 
     top->eval();
 
@@ -44,15 +44,15 @@ int main(int argc, char **argv, char **env) {
     main_time++;
 #endif
 
-    if (top->clk) {
+    if (top->clk_i) {
       cycles++;
     } else {
-      printf("cycle:%08lld, a:%08d b:%08d y:%08d\n", cycles, top->a, top->b, top->y);
+      printf("cycle:%08lld, a:%08d b:%08d y:%08d\n", cycles, top->a_i, top->b_i, top->y_o);
       a += 1;
       b += 2;
     }
 
-    top->clk ^= 1;
+    top->clk_i ^= 1;
 
   }
 

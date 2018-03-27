@@ -1,21 +1,21 @@
 module adder
-  (input         clk
-  ,input  [31:0] a
-  ,input  [31:0] b
-  ,output [31:0] y);
+  (input         clk_i
+  ,input  [31:0] a_i
+  ,input  [31:0] b_i
+  ,output [31:0] y_o);
 
   // pipeline stage 0
   logic [31:0] ar, br;
-  always_ff @(posedge clk) begin
-    ar <= a;
-    br <= b;
+  always_ff @(posedge clk_i) begin
+    ar <= a_i;
+    br <= b_i;
   end
 
   // pipeline stage 1
   logic [31:0] yr;
-  always_ff @(posedge clk)
+  always_ff @(posedge clk_i)
     yr <= ar + br;
 
-  assign y = yr;
+  assign y_o = yr;
 
 endmodule
