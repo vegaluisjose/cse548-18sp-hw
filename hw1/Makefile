@@ -1,5 +1,7 @@
 target ?= ariane
 
+test ?= benchmarks/spmv.riscv
+
 # simulation options
 # sim_opt = -p, show simulation
 # sim_opt = "--vcd=test", store waveform in test.vcd
@@ -74,8 +76,6 @@ $(ariane_dir):
 	git -C $(ariane_dir) submodule update --init --recursive
 
 # riscv tests
-
-test = benchmarks/vvadd.riscv
 
 rvtests: $(out_dir)/rvtests
 
