@@ -4,7 +4,7 @@ The goal of this homework is to test if you have setup your environment correctl
 
 ## Environment setup
 
-If you have not setup the Docker image please read [this](https://github.com/vegaluisjose/cse548-hw/tree/master/setup)
+If you have not built the Docker image please read [this](https://github.com/vegaluisjose/cse548-hw/tree/master/setup)
 
 ## Run simulation
 

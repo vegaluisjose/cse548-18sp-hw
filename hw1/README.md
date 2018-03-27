@@ -1,8 +1,8 @@
-# hw1
+# Ariane
 
-## Setting up the environment
+## Environment setup
 
-If you have not setup the Docker image please read [this](https://github.com/vegaluisjose/cse548-hw/tree/master/setup)
+If you have not built the Docker image please read [this](https://github.com/vegaluisjose/cse548-hw/tree/master/setup)
 
 ## Setting up [Ariane](https://github.com/pulp-platform/ariane)
 
