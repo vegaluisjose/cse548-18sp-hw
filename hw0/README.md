@@ -16,3 +16,4 @@ There are two ways of debugging hardware designs: using standard output or wavef
 
 * Standard output is done by the following [printf](https://github.com/vegaluisjose/cse548-hw/blob/master/hw0/src/main.cc#L50)
 * The waveform file (vcd) is created after running `make` and it is located at `./out/adder.vcd`
+    * [GTKWave](http://gtkwave.sourceforge.net) can be used for viewing vcd files
