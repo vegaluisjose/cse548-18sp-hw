@@ -9,8 +9,8 @@
     * Follow the steps in [Manage Docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/)
 
 3. Build Docker image (need at least 10GB of space and one hour of time)
-    * Run `make -C setup build`
+    * Run `make build`
 
 4. Test if you can run container in interactive mode
-    * Run `make -C setup run`
+    * Run `make run`
     * Run (in the cointainer) `exit`
