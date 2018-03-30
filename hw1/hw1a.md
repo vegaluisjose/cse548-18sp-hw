@@ -1,6 +1,6 @@
 # Ariane Scavenger Hunt
 
-The goal of this homework is getting familiar with Ariane by going through the code
+The goal of this homework is getting familiar with Ariane by going through the code and extracting information about the processor along the way
 
 ## Tips for the homework
 
