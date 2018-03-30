@@ -1,6 +1,6 @@
 # Ariane Scavenger Hunt
 
-The goal of this homework is getting familiar with Ariane by going through the code and extracting information about the processor along the way
+The goal of this homework is getting familiar with Ariane by going through the code and extracting information about microarchitectural features
 
 ## Tips for the homework
 
@@ -17,3 +17,30 @@ The goal of this homework is getting familiar with Ariane by going through the c
 * Where are the implementation files for the processor?
     * [Source](https://github.com/pulp-platform/ariane/tree/master/src)
     * [Include](https://github.com/pulp-platform/ariane/tree/master/include)
+* Ask questions if you don't understand something
+
+
+## Questions
+
+1. How many bits wide is the datapath?
+2. List the functional units available?
+3. List the ALU instructions available?
+4. How many execution cycles for an ALU operation?
+5. Does this implementation support multiplication? if so, how many execution cycles for multiplication?
+6. Does this implementation support division? if so, how many execution cycles for division?
+7. Does this implementation support floating point?
+8. How many entries for the instruction Translation Lookaside Buffer (TLB)?
+9. How many entries for the data TLB?
+10. What is the TLB replacement algorithm?
+11. How many levels has the TLB?
+12. How many entries available for the Branch Target Buffer (BTB)?
+13. What branch prediction algorithm is used?
+14. Is it possible to execute more than one fuctional unit at the same time?
+15. List the performance counters available?
+16. What is the size in bytes of the instruction cache?
+17. What is the associativity of the instruction cache?
+18. What is the total size in bytes of the data-memory used in the data cache?
+19. What is the total size in bytes of the tag-memory used in the data cache?
+20. Is the data cache blocking or non-blocking?
+21. A TLB miss is handled via software or hardware in this processor?
+22. How many bits wide is the address of the virtual memory system?
