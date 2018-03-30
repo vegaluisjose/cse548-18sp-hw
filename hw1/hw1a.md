@@ -1,6 +1,6 @@
 # Ariane Scavenger Hunt
 
-The goal of this homework is getting familiar with Ariane by going through the code and extracting information about microarchitectural features
+The goal of this homework is getting familiar with Ariane by going through the code and extracting information about its microarchitectural features
 
 ## Tips for the homework
 
