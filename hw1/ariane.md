@@ -1,10 +1,6 @@
 # Ariane
 
-## Docker setup
-
-If you have not built the Docker image please read [this](https://github.com/vegaluisjose/cse548-18sp-hw/tree/master/setup)
-
-## Download and build [Ariane](https://github.com/pulp-platform/ariane)
+## Download and build
 
 * Run `make target=ariane`
 
@@ -12,8 +8,9 @@ Ariane is a 6-stage, single issue, in-order CPU which implements the 64-bit
 RISC-V instruction set. The goal of this step is to download the
 RTL-implementation and generate a binary for simulation.
 
+## Test
 
-## Download, build, and run [riscv-tests](https://github.com/riscv/riscv-tests) for Ariane
+### Download, build, and run [riscv-tests](https://github.com/riscv/riscv-tests)
 
 * Download and build riscv-tests by `make target=rvtests`
 * Run a test by `make target=run_test`
@@ -36,7 +33,7 @@ RTL-implementation and generate a binary for simulation.
 | spmv          | FAIL    |
 | vvadd         | PASS    |
 
-## Building and running a [hello-world](https://github.com/vegaluisjose/cse548-18sp-hw/blob/master/hw1/src/hello.c) program in Ariane
+### Build and run a simple [hello-world](https://github.com/vegaluisjose/cse548-18sp-hw/blob/master/hw1/src/hello.c)
     
 * Build `make target=hello`
 * Run `make target=run_hello`
